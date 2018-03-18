@@ -1,0 +1,5 @@
+mutation publishSignal($message:String!, $signal: String!){
+  publishSignal(message: $message, signal: $signal) {
+    message
+  }
+}
