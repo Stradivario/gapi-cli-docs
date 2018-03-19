@@ -1,4 +1,8 @@
 config:
   schema:
-    introspectionEndpoint: http://localhost:9000/graphql
+    introspectionEndpoint: https://gapi-api-example.herokuapp.com/graphql
     introspectionOutputFolder: ./src/app/core/api-introspection
+
+commands:
+  typings:
+    generate: gapi schema introspect --collect-documents --collect-types

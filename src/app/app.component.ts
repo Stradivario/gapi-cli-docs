@@ -7,6 +7,7 @@ import { GAPI_APOLLO_MODULE_CONFIG, GapiApolloClientOptions } from 'gapi-angular
 import { DOCUMENTS } from './core/api-introspection/documents';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { DocumentTypes } from './core/api-introspection/documentTypes';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import { DOCUMENT } from '@angular/common';
 export class AppComponent {
   title = 'app';
   cols = 2;
-  subscription: Subscription;
+  private _subscription: Subscription;
   constructor(
     public responsive: ResponsiveProvider,
     private router: Router,
@@ -38,13 +39,13 @@ export class AppComponent {
       }
     });
 
-    // this.subscription = this.subscribe().subscribe();
-    // this.query().subscribe();
-    // this.mutation().subscribe();
+    this._subscription = this.subscription().subscribe();
+    this.query().subscribe();
+    this.mutation().subscribe();
 
     // setTimeout(() => {
     //   if (this.subscription) {
-    //     this.subscription.unsubscribe();
+    //     this._subscription.unsubscribe();
     //   }
     //   this.logout();
     // }, 10000);
@@ -52,7 +53,7 @@ export class AppComponent {
 
   query() {
     return this.gapiApolloService
-      .query<IQuery>('findUser.query.graphql', {
+      .query<IQuery, DocumentTypes>('findUser.query.graphql', {
         id: 1
       })
       .map(res => res.data.findUser);
@@ -60,18 +61,19 @@ export class AppComponent {
 
   mutation() {
     return this.gapiApolloService
-      .mutation<IMutation>('publishSignal.mutation.graphql', {
+      .mutation<IMutation, DocumentTypes>('publishSignal.mutation.graphql', {
         message: 'Hello world',
         signal: 'CREATE_SIGNAL_BASIC'
       })
       .map(res => res.data.publishSignal);
   }
 
-  subscribe() {
+  subscription() {
     return this.gapiApolloService
-      .subscription<ISubscription>('subscribeToUserMessagesBasic.subscription.graphql')
+      .subscription<ISubscription, DocumentTypes>('subscribeToUserMessagesBasic.subscription.graphql')
       .map((res) => res.data.subscribeToUserMessagesBasic);
   }
+
   goToUrl(url: string): void {
     this.document.location.href = url;
   }

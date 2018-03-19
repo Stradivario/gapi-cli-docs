@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { ResponsiveProvider } from './responsive.provider';
 import { GapiApolloModule } from 'gapi-angular-client';
 
-const uri = 'localhost:9000';
+const uri = 'gapi-api-example.herokuapp.com';
 
 @NgModule({
     imports: [
         GapiApolloModule.forRoot({
-            uri: `http://${uri}/graphql`,
-            subscriptionsUri: `ws://${uri}/subscriptions`,
+            uri: `https://${uri}/graphql`,
+            subscriptionsUri: `wss://${uri}/subscriptions`,
         })
     ],
     providers: [
