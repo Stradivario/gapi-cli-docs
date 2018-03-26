@@ -1,6 +1,6 @@
 {
-  "name": "gapi-cli-documentation",
-  "version": "0.7.3",
+  "name": "@gapi/cli-docs",
+  "version": "0.7.4",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -10,7 +10,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^5.2.9",
     "@angular/cdk": "^5.2.4",
