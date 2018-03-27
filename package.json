@@ -3,7 +3,7 @@
   "version": "0.7.18",
   "license": "MIT",
   "scripts": {
-    "postpublish": "git push ssh://git@gitlab.youvolio.com:522/gapi/cli-docs.git && git push --tags && git push ssh://git@gitlab.youvolio.com:522/gapi/gapi-cli-docs.git --tags",
+    "postpublish": "git push ssh://git@gitlab.youvolio.com:522/gapi/cli-docs.git && git push --tags && git push ssh://git@gitlab.youvolio.com:522/gapi/cli-docs.git --tags",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod --aot --output-path ../docs --base-href /gapi-cli/ && cd ../docs/ && cp index.html 404.html",
