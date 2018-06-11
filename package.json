@@ -1,6 +1,6 @@
 {
   "name": "@gapi/cli-docs",
-  "version": "0.7.276",
+  "version": "0.7.277",
   "license": "MIT",
   "scripts": {
     "postpublish": "git push -f ssh://git@gitlab.youvolio.com:522/gapi/cli-docs.git && git push --tags && git push ssh://git@gitlab.youvolio.com:522/gapi/cli-docs.git --tags",
